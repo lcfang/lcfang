@@ -1,0 +1,16 @@
+piVersion: v1
+kind: Pod
+metadata:
+  name: volum-subpath-pd
+spec:
+  containers:
+  - image: gcr.io/google_containers/test-webserver
+    name: test-extend
+    volumeMounts:
+    - mountPath: /test-volume
+      name: extend-volume
+      subPath: subpath
+  volumes:
+  - name: extend-volume
+    hostPath:
+      path: /tmp/test_extend/
