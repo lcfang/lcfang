@@ -1,0 +1,138 @@
+cat /tmp/kube-apiserver.log | grep "clouds"
+cat /tmp/kube-apiserver.log | grep "clouds" | grep DELETE
+cat /tmp/kube-apiserver.log | grep "clouds" | grep DELETE | grep default
+
+
+kubectl get sourcename -n namespaces -oyaml
+kubectl edit sourcename -n namespaces -oyaml
+
+kubectl get pod --show-lables //获得详细的pod信息
+kubectl get podname  -n namespaces -owide
+ 
+
+#当不是在root用户下运行docker命令时，要加sudo，执行sudo su可以进入root用户，exit可以退出当前用户 
+sudo docker images | grep none 
+sudo docker images | grep none | awk '{print $3}'
+sudo docker rmi -f `sudo docker images | grep none | awk '{print $3}'`
+ 
+#获取kube-dns-8912465-568dn（pod name） kubedns(container name)的运行日志，可以查看运行卡在哪里，从而定位问题
+kubectl logs  kube-dns-8912465-568dn kubedns -nkube-system -v=10 
+
+#执行程序在后台运行
+nohup 命令 >输出重定向到文件 & 即可，tailf 重定向的文件，可以输出到控制台查看运行进度
+若想关掉运行程序，使用ps -ef |grep xxx可以获得XXX的进程，kill+进程号，即可
+
+sudo ifconfig可以查看当前节点的网卡信息
+
+
+kubectl get pod -n namespaces -owide可以显示pod的更详细信息，入IP和绑定的node的IP
+
+#######git 代理：
+~/.gitconfig
+//查看git代理
+git config --global --list
+//编辑git代理
+git config --global --e
+
+###shell压缩（eg:把hello文件压缩为hello.tar.gz，且希望解压后没有hello文件夹），需先进入hello文件夹，运行：
+tar -czf hello.tar.gz ./*
+
+
+
+###打印出kubelet.log中包含Enter的所有行
+cat kubelet.log |grep Enter
+
+
+//获取当前系统的版本
+cat /proc/version
+lsb_release -a
+uname -a
+
+//执行shell脚本(其中-x能够显示脚本的执行过程)
+sh -x **.sh
+
+//rpm（redhat package managemant）的使用
+//安装rpm软件包  
+rpm -i package.rpm 
+出现 ... conflict with ... 可能是要安装的包里有一些文件可能会覆盖现有 
+的文件，缺省时这样的情况下是无法正确安装的可以使用强制安装：rpm --force -i 
+//卸载rpm软件包
+rpm -e package 
+有时会出现一些错误或者警告：... is needed by ... 这说明这个软件被其他软件需要，不能随便卸载,可以用rpm -e --nodeps强制卸载
+
+
+//快捷键
+ctr+r //可以搜索以前输入的命令
+
+//apt软件安装等相关操作
+查找软件
+
+命令： apt-cache search keyword
+
+查询软件状态
+
+命令： apt-cache policy softname
+
+安装软件
+
+命令： apt-get install softname1 softname2 softname3……
+
+卸载软件
+
+命令： apt-get remove softname1 softname2 softname3……
+
+卸载并清除配置
+
+命令： apt-get remove --purge softname1
+
+更新软件信息数据库
+
+命令： apt-get update
+
+进行系统升级
+
+命令： apt-get upgrade
+
+搜索软件包
+
+命令： apt-cache search softname1 softname2 softname3……
+
+
+//软件/应用重启
+sudo service softname restart
+
+//查看容器日志
+1.docker ps查看容器
+2.docker logs CONTAINER ID 可查看相应container的日志
+
+//查看宿主机iptables配置
+iptables -L -n 
+
+//删除iptables设置规则
+iptables -F 
+
+//进入docker进行操作
+docker exec -ti CONTAINER ID bash
+
+//解决gitbash中vi/vim中无法复制粘贴的问题
+创建~/.vimrc 加入内容：
+syntax on
+if has('mouse')
+    set mouse-=a
+endif
+保存即可
+
+//在docker中执行命令
+//基本模式
+docker exec container ID command
+//后台模式
+
+//交互模式(前提是容器镜像中有bash)
+docker exec -ti container ID /bin/bash //会进入到container中，可输入命令执行
+使用kubectl命令：kubectl exec podname -ti /bin/bash
+
+
+
+
+
+
