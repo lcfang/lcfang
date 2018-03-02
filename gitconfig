@@ -1,0 +1,18 @@
+~/.gitconfig
+
+[user]
+        name = l00427186
+        eamil = licuifang@huawei.com
+        email = licuifang@huawei.com
+[core]
+        editor = vim
+[http]
+        postBuffer = 524288000
+        proxy = http://l00427186:huawei%40427186@proxyhk.huawei.com:8080
+        sslverify = false
+[https]
+        postBuffer = 524288000
+        proxy = https://l00427186:huawei%40427186@proxyhk.huawei.com:8080
+        sslverify = false
+[credential]
+        helper = store
