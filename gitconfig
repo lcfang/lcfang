@@ -8,11 +8,11 @@
         editor = vim
 [http]
         postBuffer = 524288000
-        proxy = http://l00427186:huawei%40427186@proxyhk.huawei.com:8080
+        proxy = http://10.229.53.140:8118
         sslverify = false
 [https]
         postBuffer = 524288000
-        proxy = https://l00427186:huawei%40427186@proxyhk.huawei.com:8080
+        proxy = http://10.229.53.140:8118
         sslverify = false
 [credential]
         helper = store
