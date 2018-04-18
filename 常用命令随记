@@ -131,6 +131,9 @@ docker exec container ID command
 docker exec -ti container ID /bin/bash //会进入到container中，可输入命令执行
 使用kubectl命令：kubectl exec podname -ti /bin/bash
 
+//查看系统磁盘占用情况
+df -h
+
 
 
 
